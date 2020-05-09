@@ -28,6 +28,9 @@ public class HikvisionReceiveTest {
 	 */
 	private static String camerarRtspAddr = "rtsp://admin:admin12345@192.168.1.63:554/Streaming/Channels/103";
 
+	/**
+	 * 推送到EasyDarwin的rtsp推流地址
+	 */
 	private static String EasyDarwinRtspAddr = "rtsp://localhost:554/live";
 
 	public static void main(String[] args) throws Exception, org.bytedeco.javacv.FrameRecorder.Exception {
