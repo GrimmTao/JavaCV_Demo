@@ -20,7 +20,7 @@ public class Frame2LocalVideo {
 	// 以海康威视摄像头的rtsp地址为例
 	private static String rtspAddr = "rtsp://admin:admin12345@192.168.1.63:554/Streaming/Channels/103";
 
-	private static String videoPath = "C:/Users/zepei.tao/Desktop/testVideo.mp4";
+	private static String videoPath = "C:/Users/alex/Desktop/testVideo.mp4";
 
 	private static int i = 0;
 
