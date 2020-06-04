@@ -4,7 +4,9 @@
 package com.alex.demo.javacv.demo;
 
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -12,6 +14,7 @@ import javax.imageio.ImageIO;
 import org.bytedeco.ffmpeg.global.avcodec;
 import org.bytedeco.ffmpeg.global.avutil;
 import org.bytedeco.javacv.*;
+import org.bytedeco.opencv.opencv_core.Mat;
 
 /**
  * @Author Alex
@@ -102,5 +105,71 @@ public class JavaCVUtil {
 			throw new RuntimeException("bugImg读取失败:" + e.getMessage(), e);
 		}
 		return bStream.toByteArray();
+	}
+
+	/**
+	 * 将bufferedImage转换成本地图片
+	 * 
+	 * @param formatName
+	 *            图片格式 ，jpg或者png
+	 * @throws IOException
+	 */
+	public static void writeImageFile(BufferedImage img, String imgPath, String formatName) throws IOException {
+		File outputfile = new File(imgPath);
+		ImageIO.write(img, formatName, outputfile);
+	}
+
+	/**
+	 * 将frame转换成BufferedImage
+	 */
+	public static BufferedImage frame2BufferedImage(Frame frame) {
+		Java2DFrameConverter java2dFrameConverter = new Java2DFrameConverter();
+		BufferedImage bufferedImage = java2dFrameConverter.convert(frame);
+		return bufferedImage;
+	}
+
+	/**
+	 * BufferImage转byte[]
+	 * 
+	 * @param formatName
+	 *            图片格式，jpg或者png
+	 */
+	public static byte[] bufImg2Bytes(BufferedImage original, String formatName) {
+		ByteArrayOutputStream bStream = new ByteArrayOutputStream();
+		try {
+			ImageIO.write(original, formatName, bStream);
+		} catch (IOException e) {
+			throw new RuntimeException("bugImg读取失败:" + e.getMessage(), e);
+		}
+		return bStream.toByteArray();
+	}
+
+	/**
+	 * byte[]转BufferImage
+	 * 
+	 * @param imgBytes
+	 * @return
+	 */
+	public static BufferedImage bytes2bufImg(byte[] imgBytes) {
+		BufferedImage tagImg = null;
+		try {
+			tagImg = ImageIO.read(new ByteArrayInputStream(imgBytes));
+			return tagImg;
+		} catch (IOException e) {
+			throw new RuntimeException("bugImg写入失败:" + e.getMessage(), e);
+		}
+	}
+
+	/**
+	 * BufferedImage 转 mat
+	 * 
+	 * @param original
+	 * @return
+	 */
+	public static Mat bufImg2Mat(BufferedImage original) {
+		OpenCVFrameConverter.ToMat openCVConverter = new OpenCVFrameConverter.ToMat();
+		Java2DFrameConverter java2DConverter = new Java2DFrameConverter();
+		Mat mat = openCVConverter.convert(java2DConverter.convert(original));
+		return mat;
 	}
 }
