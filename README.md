@@ -1,7 +1,7 @@
 # JavaCV_Demo
 利用JavaCV处理视频流的demo
 
-###关于依赖包
+### 关于依赖包
 想要图省事，直接依赖javacv-platform，如下
 `<dependency>
      <groupId>org.bytedeco</groupId>
@@ -83,7 +83,7 @@
  
  裁剪后的依赖目录如下所示：
  
- ###注意事项
+ ### 注意事项
  录制视频最后一定要有recorder.close()的方法过程，否则生成的视频没有时长，并且无法在一般的播放器里面播放。
  
  这里再记录一下开发过程中遇到的一个坑：当时开发的的系统平台是Linux-arm64,最开始选择的依赖是JavaCV-Platfrom 1.5版本，但是却无法正常运行，后来才发现1.5版本是不支持arm64平台的。升级到最新1.5.3版本，才支持arm64平台。
