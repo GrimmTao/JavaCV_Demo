@@ -120,15 +120,6 @@ public class JavaCVUtil {
 	}
 
 	/**
-	 * 将frame转换成BufferedImage
-	 */
-	public static BufferedImage frame2BufferedImage(Frame frame) {
-		Java2DFrameConverter java2dFrameConverter = new Java2DFrameConverter();
-		BufferedImage bufferedImage = java2dFrameConverter.convert(frame);
-		return bufferedImage;
-	}
-
-	/**
 	 * BufferImage转byte[]
 	 * 
 	 * @param formatName
