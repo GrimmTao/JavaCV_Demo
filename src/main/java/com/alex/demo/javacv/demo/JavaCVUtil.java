@@ -21,6 +21,7 @@ import org.bytedeco.opencv.opencv_core.Mat;
  * @Created Dec 2020/6/4 11:59
  * @Description
  *              <p>
+ *              关于BufferedImage、IplImage、Mat、Frame之间的转换，可以使用JavaCV自带类 Java2DFrameUtils提供的接口方法
  */
 public class JavaCVUtil {
 
