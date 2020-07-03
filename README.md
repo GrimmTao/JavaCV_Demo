@@ -3,11 +3,13 @@
 
 ### 关于依赖包
 想要图省事，直接依赖javacv-platform，如下
-`<dependency>
+````xml
+ <dependency>
      <groupId>org.bytedeco</groupId>
      <artifactId>javacv-platform</artifactId>
      <version>1.5.3</version>
- </dependency>`
+ </dependency>
+ ````
  
  但是这样会导致一个问题，platform会把所有平台（windows、linux、android）的依赖包全部都导进来，这就导致最后导出的jar
 包很大，有将近800M，所以要针对软件运行的平台对依赖进行裁剪,而裁剪之后的jar包容量约为80M左右。
@@ -22,14 +24,16 @@
 
 利用maven的【classifier】指定系统平台，从而达到筛选的目的。以windows-86_64位系统为例，此平台上的依赖应该是这样的：
 
-`<dependency>
+````xml
+ <dependency>
     <groupId>org.bytedeco</groupId>
     <artifactId>javacv</artifactId>
     <version>1.5.3</version>
  </dependency>
- `
+ ````
  
- `<dependency>
+ ````xml
+  <dependency>
     <groupId>org.bytedeco</groupId>
     <artifactId>javacpp</artifactId>
     <version>1.5.3</version>
@@ -40,9 +44,10 @@
     <version>1.5.3</version>
     <classifier>windows-x86_64</classifier>
   </dependency>
- `
+ ````
  
- `<dependency>
+ ````xml
+  <dependency>
     <groupId>org.bytedeco</groupId>
     <artifactId>ffmpeg</artifactId>
     <version>4.2.2-1.5.3</version>
@@ -53,9 +58,10 @@
     <version>4.2.2-1.5.3</version>
     <classifier>windows-x86_64</classifier>
   </dependency>
- `
+ ````
  
- `<dependency>
+ ````xml
+  <dependency>
     <groupId>org.bytedeco</groupId>
     <artifactId>opencv</artifactId>
     <version>4.3.0-1.5.3</version>
@@ -66,9 +72,10 @@
     <version>4.3.0-1.5.3</version>
     <classifier>windows-x86_64</classifier>
   </dependency>
- `
+ ````
  
- `<dependency>
+ ````xml
+  <dependency>
       <groupId>org.bytedeco</groupId>
       <artifactId>openblas</artifactId>
       <version>0.3.9-1.5.3</version>
@@ -79,7 +86,7 @@
       <version>0.3.9-1.5.3</version>
       <classifier>windows-x86_64</classifier>
   </dependency>
-  `
+  ````
  
  裁剪后的依赖目录如下所示：
  
