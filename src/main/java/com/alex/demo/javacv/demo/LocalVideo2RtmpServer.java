@@ -3,16 +3,11 @@
  ******************************************************************************/
 package com.alex.demo.javacv.demo;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import org.bytedeco.ffmpeg.global.avcodec;
 import org.bytedeco.ffmpeg.global.avutil;
-import org.bytedeco.javacv.CanvasFrame;
-import org.bytedeco.javacv.FFmpegFrameGrabber;
-import org.bytedeco.javacv.Frame;
-import org.bytedeco.javacv.FrameGrabber;
-import org.bytedeco.javacv.FrameRecorder;
-import org.bytedeco.javacv.OpenCVFrameConverter;
+import org.bytedeco.javacv.*;
 import org.bytedeco.opencv.opencv_core.IplImage;
 
 import lombok.extern.slf4j.Slf4j;
@@ -27,8 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class LocalVideo2RtmpServer {
 
-	private static String localVideoPath = "C:\\Users\\Grimm\\Desktop\\videoTest.mp4";
-	// C:/Users/alex/Desktop/testVideo.mp4
+	private static String localVideoPath = "C:/Users/alex/Desktop/testVideo.mp4";
 
 	private static String rtmpServer = "rtmp://localhost:10035/hls/aBYhrSBGR?sign=MfY29IBMgz";
 
