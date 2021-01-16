@@ -3,10 +3,16 @@
  ******************************************************************************/
 package com.alex.demo.javacv.demo;
 
-import javax.swing.*;
+import javax.swing.JFrame;
 
+import org.bytedeco.ffmpeg.global.avcodec;
 import org.bytedeco.ffmpeg.global.avutil;
-import org.bytedeco.javacv.*;
+import org.bytedeco.javacv.CanvasFrame;
+import org.bytedeco.javacv.FFmpegFrameGrabber;
+import org.bytedeco.javacv.Frame;
+import org.bytedeco.javacv.FrameGrabber;
+import org.bytedeco.javacv.FrameRecorder;
+import org.bytedeco.javacv.OpenCVFrameGrabber;
 
 /**
  * @Author Alex
@@ -47,7 +53,8 @@ public class Frame2RtmpServer {
 		canvas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		canvas.setAlwaysOnTop(true);
 
-		FrameRecorder recorder = JavaCVUtil.initRecorder(rtmpAddr, 20, 640, 480, "flv");
+		FrameRecorder recorder = JavaCVUtil.initRecorder(rtmpAddr, 20, "flv", 640, 480, avcodec.AV_CODEC_ID_H264, grabber.getAudioChannels(),
+				grabber.getAudioCodec(), avutil.AV_PIX_FMT_YUV420P);
 		recorder.start();// 开启录制器
 
 		Frame frame = null;
@@ -89,13 +96,14 @@ public class Frame2RtmpServer {
 	 */
 	private static void pullRtsp2RtmpServer(String rtspAddr, String rtmpAddr, int frameRate)
 			throws FrameGrabber.Exception, InterruptedException, org.bytedeco.javacv.FrameRecorder.Exception {
-		FFmpegFrameGrabber grabber = JavaCVUtil.initGrabber(rtspAddr, 25, 640, 480);
+		FFmpegFrameGrabber grabber = JavaCVUtil.initGrabber(rtspAddr, 25, 640, 480, avcodec.AV_CODEC_ID_H264, true);
 		grabber.start(); // 开始获取摄像头数据
 		CanvasFrame canvas = new CanvasFrame("摄像头", CanvasFrame.getDefaultGamma() / grabber.getGamma());// 新建一个窗口
 		canvas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		canvas.setAlwaysOnTop(true);
 
-		FrameRecorder recorder = JavaCVUtil.initRecorder(rtmpAddr, 20, 640, 480, "flv");
+		FrameRecorder recorder = JavaCVUtil.initRecorder(rtmpAddr, 20, "flv", 640, 480, grabber.getVideoCodec(), grabber.getAudioChannels(),
+				grabber.getAudioCodec(), avutil.AV_PIX_FMT_YUV420P);
 		recorder.start();// 开启录制器
 
 		Frame frame = null;
