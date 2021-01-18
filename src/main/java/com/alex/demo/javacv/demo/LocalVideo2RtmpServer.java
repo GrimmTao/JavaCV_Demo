@@ -28,7 +28,7 @@ public class LocalVideo2RtmpServer {
 
 	public static void main(String[] args) throws FrameGrabber.Exception, InterruptedException, org.bytedeco.javacv.FrameRecorder.Exception {
 		avutil.av_log_set_level(avutil.AV_LOG_ERROR);// 设置JavaCV只显示error级别的log
-		pullLocalVideo2RtmpServer(localVideoPath, rtmpServer, 30);
+		pushLocalVideo2RtmpServer(localVideoPath, rtmpServer, 30);
 		// parseLocalVideoAndPlay(localVideoPath, 25);
 	}
 
@@ -42,7 +42,7 @@ public class LocalVideo2RtmpServer {
 	 * @param frameRate
 	 *            帧率
 	 */
-	private static void pullLocalVideo2RtmpServer(String localVideoPath, String rtmpAddr, int frameRate)
+	private static void pushLocalVideo2RtmpServer(String localVideoPath, String rtmpAddr, int frameRate)
 			throws FrameGrabber.Exception, InterruptedException, org.bytedeco.javacv.FrameRecorder.Exception {
 		FFmpegFrameGrabber grabber = JavaCVUtil.initGrabber(localVideoPath, frameRate, 852, 480, avcodec.AV_CODEC_ID_H264, false);
 		grabber.start();// 开始解析视频文件，获取帧数据
