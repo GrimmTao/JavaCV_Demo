@@ -3,16 +3,13 @@
  ******************************************************************************/
 package com.alex.demo.javacv.demo;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import org.bytedeco.ffmpeg.global.avcodec;
 import org.bytedeco.ffmpeg.global.avutil;
-import org.bytedeco.javacv.CanvasFrame;
-import org.bytedeco.javacv.FFmpegFrameGrabber;
-import org.bytedeco.javacv.Frame;
-import org.bytedeco.javacv.FrameGrabber;
-import org.bytedeco.javacv.FrameRecorder;
-import org.bytedeco.javacv.OpenCVFrameGrabber;
+import org.bytedeco.javacv.*;
+
+import com.alex.demo.javacv.demo.util.JavaCVUtil;
 
 /**
  * @Author Alex

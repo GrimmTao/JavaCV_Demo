@@ -10,6 +10,8 @@ import org.bytedeco.ffmpeg.global.avutil;
 import org.bytedeco.javacv.*;
 import org.bytedeco.opencv.opencv_core.IplImage;
 
+import com.alex.demo.javacv.demo.util.JavaCVUtil;
+
 import lombok.extern.slf4j.Slf4j;
 
 /**

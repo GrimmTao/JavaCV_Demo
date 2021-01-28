@@ -1,7 +1,7 @@
 /*******************************************************************************
  * Copyright (c) 2020, 2020 Alex.
  ******************************************************************************/
-package com.alex.demo.javacv.demo;
+package com.alex.demo.javacv.demo.util;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -12,13 +12,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import org.bytedeco.ffmpeg.global.avcodec;
-import org.bytedeco.javacv.FFmpegFrameGrabber;
-import org.bytedeco.javacv.Frame;
-import org.bytedeco.javacv.FrameGrabber;
-import org.bytedeco.javacv.FrameRecorder;
-import org.bytedeco.javacv.Java2DFrameConverter;
-import org.bytedeco.javacv.OpenCVFrameConverter;
-import org.bytedeco.javacv.OpenCVFrameGrabber;
+import org.bytedeco.javacv.*;
 import org.bytedeco.opencv.opencv_core.Mat;
 
 /**

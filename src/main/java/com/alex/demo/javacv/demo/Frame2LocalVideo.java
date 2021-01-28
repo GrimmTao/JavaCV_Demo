@@ -3,15 +3,16 @@
  ******************************************************************************/
 package com.alex.demo.javacv.demo;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 import org.bytedeco.ffmpeg.global.avcodec;
 import org.bytedeco.ffmpeg.global.avutil;
 import org.bytedeco.javacv.CanvasFrame;
-import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.bytedeco.javacv.Frame;
 import org.bytedeco.javacv.FrameGrabber;
 import org.bytedeco.javacv.FrameRecorder;
+
+import com.alex.demo.javacv.demo.util.JavaCVUtil;
 
 /**
  * @Author Alex
@@ -25,19 +26,25 @@ public class Frame2LocalVideo {
 	// 以海康威视摄像头的rtsp地址为例
 	private static String rtspAddr = "rtsp://admin:admin12345@192.168.1.63:554/Streaming/Channels/103";
 
-	private static String videoPath = "C:/Users/alex/Desktop/testVideo.mp4";
+	private static String videoPath = "C:/Users/zepei.tao/Desktop/testVideo.mp4";
 
 	private static int i = 0;
 
 	public static void main(String[] args) throws FrameGrabber.Exception, InterruptedException, org.bytedeco.javacv.FrameRecorder.Exception {
 		avutil.av_log_set_level(avutil.AV_LOG_ERROR);// 设置JavaCV只显示error级别的log
 		convertFrame2LocalVideo(rtspAddr, videoPath, 25);
+		// convertFrame2LocalVideo(null, videoPath, 25);
 	}
 
 	private static void convertFrame2LocalVideo(String rtspAddr, String videoPath, int frameRate)
 			throws FrameGrabber.Exception, InterruptedException, org.bytedeco.javacv.FrameRecorder.Exception {
-		// OpenCVFrameGrabber grabber =JavaCVUtil.initComputerCameraGrabber();
-		FFmpegFrameGrabber grabber = JavaCVUtil.initGrabber(rtspAddr, 25, 640, 480, avcodec.AV_CODEC_ID_H264, true);
+		FrameGrabber grabber = null;
+		if (rtspAddr == null) {// 开启笔记本自带摄像头
+			grabber = JavaCVUtil.initComputerCameraGrabber();
+		} else {// 接入外接rtsp格式摄像头
+			grabber = JavaCVUtil.initGrabber(rtspAddr, 25, 640, 480, avcodec.AV_CODEC_ID_H264, true);
+		}
+
 		grabber.start(); // 开始获取摄像头数据
 		CanvasFrame canvas = new CanvasFrame("摄像头", CanvasFrame.getDefaultGamma() / grabber.getGamma());// 新建一个窗口
 		canvas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
