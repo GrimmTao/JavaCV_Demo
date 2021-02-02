@@ -15,6 +15,7 @@
 包很大，有将近800M，所以要针对软件运行的平台对依赖进行裁剪,而裁剪之后的jar包容量约为80M左右。
 
 不进行裁剪情况下的依赖长这样：
+
  ![javacv-platform-all.JPG](https://upload-images.jianshu.io/upload_images/25046096-7d56cc6f44bd756c.JPG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
@@ -91,6 +92,7 @@
   ````
  
  裁剪后的依赖目录如下所示：
+ 
  ![javacv-platform-windows.png](https://upload-images.jianshu.io/upload_images/25046096-44a5d2f0697b320d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
   
  
