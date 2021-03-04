@@ -23,7 +23,7 @@
 
 下面开始对依赖进行裁剪，要想裁剪，首先需要了解为了整体功能的正常运行，我们需要JavaCV的哪些包：
 
-① javacv.jar；   ② javacpp.jar；   ③ javacpp-系统平台.jar   ④ ffmpeg.jar；   ⑤ ffmpeg-系统平台.jar；   ⑥ opencv.jar；   ⑦ opencv-系统平台.jar   ⑧ openblas.jar   ⑨ openblas-系统平台.jar
+① javacv.jar；   ② javacpp.jar；   ③ javacpp-系统平台.jar；   ④ ffmpeg.jar；   ⑤ ffmpeg-系统平台.jar；   ⑥ opencv.jar；   ⑦ opencv-系统平台.jar；   ⑧ openblas.jar；   ⑨ openblas-系统平台.jar
 
 利用maven的【classifier】指定系统平台，从而达到筛选的目的。以windows-86_64位系统为例，此平台上的依赖应该是这样的：
 
